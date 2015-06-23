@@ -1,0 +1,27 @@
+
+
+<div class="container-fluid">
+
+	<h1>
+		Users
+	</h1>
+
+	<div class="table-responsive">
+  		<table class="table table-bordered table-striped">
+
+  			<tr ng-repeat="u in users">
+
+  				<td>
+  					<span ng-bind="u.username"></span>
+  				</td>		
+
+          <td>
+            <span ng-bind="u.email"></span>
+          </td>
+
+    		<tr>
+
+  		</table>
+	</div>
+
+</div>

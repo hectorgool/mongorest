@@ -1,0 +1,54 @@
+<br>
+<br>
+<br>
+<div class="col-md-6 col-md-offset-3">
+
+    <form>
+
+      <div ng-controller="ElasticSearchCtrl">
+
+        <div class="input-group">
+          <input id="term" 
+            class="form-control input-lg" 
+            ng-keyup="onKeyUpSendTerm()" 
+            type="text" 
+            placeholder="Search items" 
+            autocomplete="off"
+          >
+
+          <span class="input-group-addon btn-white">
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span> 
+            <span ng-if="jsonResponse.hits.total > 0">Hits: {{ jsonResponse.hits.total }}</span>
+          </span>
+
+        </div> 
+
+        <!--
+        <pre> {{ jsonTerm | json }}</pre>
+        <pre> Hits: {{ jsonResponse.hits.total | json }}</pre>
+        -->
+        <!--<pre> Result: {{ jsonResponse.hits.hits | json }}</pre>-->
+        
+        <hr>
+        <div ng-repeat="obj in jsonResponse.hits.hits">
+
+          <div class="row">
+            <div class="col-md-12">
+                Colonia: <span ng-bind="obj._source.colonia"></span><br>
+                <!--Delegación: <span ng-bind="obj._source.delegacion"></span><br>-->
+                <strong ng-bind="obj._source.ciudad"></strong><br>
+                Latitud: <span ng-bind="obj._source.location.lat"></span><br>
+                Longitud: <span ng-bind="obj._source.location.lon"></span><br>
+            </div>
+          </div>
+          <hr>
+
+        </div>
+
+        <!--<pre> {{ jsonResponse |json }}</pre>-->
+
+      </div>
+
+    </form>
+
+</div>
